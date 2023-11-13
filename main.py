@@ -50,6 +50,7 @@ def main():
 
 
 def question_answer(question):
+ print('HERE GOES NOTHING')   
  client = st.session_state.client
  thread = st.session_state.thread
  messages = ""
