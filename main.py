@@ -35,13 +35,7 @@ def main():
                 st.warning("Please enter a question.")
             else:
                 # Generate and display the answer
-                while True:
-                    try:
-                        messages = question_answer(question)
-                        break  # Break out of the loop if the function call is successful
-                    except Exception as e:
-                        # Handle the exception (you might want to log it or print an error message)
-                        print(f"Error: {e}")
+                messages = question_answer(question)
                 for msg in reversed(messages.data):
                  role = msg.role
                  content = msg.content[0].text.value
