@@ -6,7 +6,9 @@ openai_api_key = os.getenv("OPENAI_API_KEY")
 messages = ""
 if 'code_executed' not in st.session_state:
     # Initialize the OpenAI client and create a thread
-    st.session_state.client = openai.OpenAI(api_key='')
+    api_config = st.secrets["api"]
+    openai_api_key = api_config["openai_api_key"]  
+    st.session_state.client = openai.OpenAI(api_key=openai_api_key)
     st.session_state.thread = st.session_state.client.beta.threads.create()
     st.session_state.code_executed = True
 
