@@ -78,7 +78,7 @@ def question_answer(question):
     
  while run_status.status != 'completed':
   time.sleep(5) 
-  run_status = client.beta.threads.runs.retrieve(thread_id=thread_id, run_id=run_id)
+  run_status = client.beta.threads.runs.retrieve(thread_id=thread.id, run_id=run.id)
     
  #messages = st.session_state.messages
  #if run_status.status == 'completed':
