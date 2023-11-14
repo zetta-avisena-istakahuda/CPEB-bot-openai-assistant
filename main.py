@@ -8,6 +8,7 @@ if 'code_executed' not in st.session_state:
     # Initialize the OpenAI client and create a thread
     api_config = st.secrets["api"]
     openai_api_key = api_config["openai_api_key"]
+    st.session_state.messages = []
     st.session_state.client = openai.OpenAI(api_key=openai_api_key)
     st.session_state.thread = st.session_state.client.beta.threads.create()
     st.session_state.code_executed = True
@@ -76,11 +77,11 @@ def question_answer(question):
  )
 
  if run_status.status == 'completed':
-  messages = client.beta.threads.messages.list(
+  st.session_state.messages = client.beta.threads.messages.list(
   thread_id = thread.id
   )
 
- return(messages)
+ return(st.session_state.messages)
 
 if __name__ == "__main__":
 
