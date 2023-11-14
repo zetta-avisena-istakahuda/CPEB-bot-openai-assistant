@@ -4,11 +4,11 @@ import openai
 
 openai_api_key = os.getenv("OPENAI_API_KEY")
 messages = ""
-counter = 0
 if 'code_executed' not in st.session_state:
     # Initialize the OpenAI client and create a thread
     api_config = st.secrets["api"]
-    openai_api_key = api_config["openai_api_key"]  
+    openai_api_key = api_config["openai_api_key"]
+    st.session_state.counter = 0
     st.session_state.client = openai.OpenAI(api_key=openai_api_key)
     st.session_state.thread = st.session_state.client.beta.threads.create()
     st.session_state.code_executed = True
@@ -16,7 +16,6 @@ if 'code_executed' not in st.session_state:
 # Streamlit app
 def main():
     global messages
-    global counter
     thread = st.session_state.thread
     from dotenv import load_dotenv
     load_dotenv()
@@ -47,13 +46,13 @@ def main():
                      background_color = "lightgrey"
                  else:
                      background_color = "white"
-                 styled_content = f"<div style='background-color:{background_color}; padding:10px;'>{content} Counter: {counter}</div>"
+                 styled_content = f"<div style='background-color:{background_color}; padding:10px;'>{content} Counter: {st.session_state.counter}</div>"
                  st.markdown(styled_content, unsafe_allow_html=True)
 
 
 def question_answer(question):
  global counter
- counter = counter + 1
+ st.session_state.counter = st.session_state.counter + 1
  client = st.session_state.client
  thread = st.session_state.thread
  messages = ""
