@@ -77,11 +77,11 @@ def question_answer(question):
  )
 
  if run_status.status == 'completed':
-  st.session_state.messages = client.beta.threads.messages.list(
+  messages = client.beta.threads.messages.list(
   thread_id = thread.id
   )
 
- return(st.session_state.messages)
+ return(messages)
 
 if __name__ == "__main__":
 
