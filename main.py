@@ -3,7 +3,7 @@ import os
 import openai
 
 openai_api_key = os.getenv("OPENAI_API_KEY")
-messages = ""
+messages = []
 if 'code_executed' not in st.session_state:
     # Initialize the OpenAI client and create a thread
     api_config = st.secrets["api"]
@@ -56,7 +56,7 @@ def question_answer(question):
  global counter
  client = st.session_state.client
  thread = st.session_state.thread
- messages = ""
+ messages = []
  import time
 
  message = client.beta.threads.messages.create(
@@ -76,6 +76,10 @@ def question_answer(question):
  )
 
  if run_status.status == 'completed':
+  messages = client.beta.threads.messages.list(
+  thread_id = thread.id
+  )
+ else:
   messages = client.beta.threads.messages.list(
   thread_id = thread.id
   )
