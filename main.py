@@ -76,14 +76,13 @@ def question_answer(question):
   thread_id = thread.id,
   run_id = run.id
  )
-
+    
+ messages = st.session_state.messages
  if run_status.status == 'completed':
   messages = client.beta.threads.messages.list(
   thread_id = thread.id,
   )
-  st.session_state.messages
- else:
-  messages = st.session_state.messages.data
+  st.session_state.messages = messages
 
  return(messages.data)
 
