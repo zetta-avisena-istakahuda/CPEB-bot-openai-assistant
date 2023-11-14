@@ -78,9 +78,9 @@ def question_answer(question):
 
  if run_status.status == 'completed':
   messages = client.beta.threads.messages.list(
-  thread_id = thread.id
-  st.session_state.messages = messages
+  thread_id = thread.id,
   )
+  st.session_state.messages
  else:
   messages = st.session_state.messages
 
