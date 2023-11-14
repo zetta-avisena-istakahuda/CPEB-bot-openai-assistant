@@ -49,8 +49,8 @@ def main():
                      background_color = "lightgrey"
                  else:
                      background_color = "white"
-                 pattern = re.compile(r'&#8203;``【oaicite:3】``&#8203;')    
-                 styled_content = f"<div style='background-color:{background_color}; padding:10px;'>{re.sub(pattern, '', content)}</div>"
+                     
+                 styled_content = f"<div style='background-color:{background_color}; padding:10px;'>{content}</div>"
                  st.markdown(styled_content, unsafe_allow_html=True)
 
 
@@ -83,7 +83,7 @@ def question_answer(question):
   )
   st.session_state.messages
  else:
-  messages = st.session_state.messages
+  messages = st.session_state.messages.data
 
  return(messages.data)
 
