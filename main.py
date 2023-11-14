@@ -70,19 +70,22 @@ def question_answer(question):
     thread_id = thread.id,
     assistant_id = 'asst_ClB4u6msV6MOYyH57halU5cU',
 )
- time.sleep(40)
 
  run_status = client.beta.threads.runs.retrieve(
   thread_id = thread.id,
   run_id = run.id
  )
     
- messages = st.session_state.messages
- if run_status.status == 'completed':
-  messages = client.beta.threads.messages.list(
+ while run_status.status != 'completed':
+  time.sleep(5) 
+  run_status = client.beta.threads.runs.retrieve(thread_id=thread_id, run_id=run_id)
+    
+ #messages = st.session_state.messages
+ #if run_status.status == 'completed':
+ messages = client.beta.threads.messages.list(
   thread_id = thread.id,
   )
-  st.session_state.messages = messages
+  #st.session_state.messages = messages
 
  return(messages.data)
 
