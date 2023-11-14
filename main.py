@@ -16,7 +16,7 @@ if 'code_executed' not in st.session_state:
 # Streamlit app
 def main():
     import re
-    pattern = re.compile(r'&#8203;``【oaicite:2】``&#8203;')
+    pattern = re.compile(r'&#8203;``【oaicite:1】``&#8203;')
     global messages
     thread = st.session_state.thread
     from dotenv import load_dotenv
