@@ -32,14 +32,14 @@ def main():
     with right_column:
         st.title(f"CPEB 2024 - Posez-nous vos questions...")
         question = st.text_input("Entrez votre question:")
-        if st.button("Obtenir la réponse"):
+        if st.button("Obtenir la réponse") or question:
             # Check if a question is provided
             if not question:
                 st.warning("Please enter a question.")
             else:
                 # Generate and display the answer
-                question = ''
                 messages = question_answer(question)
+                question = ''
                 for msg in reversed(messages.data):
                  role = msg.role
                  content = msg.content[0].text.value
