@@ -15,6 +15,8 @@ if 'code_executed' not in st.session_state:
 
 # Streamlit app
 def main():
+    import re
+    pattern = re.compile(r'&#8203;``【oaicite:2】``&#8203;')
     global messages
     thread = st.session_state.thread
     from dotenv import load_dotenv
@@ -46,7 +48,7 @@ def main():
                      background_color = "lightgrey"
                  else:
                      background_color = "white"
-                 styled_content = f"<div style='background-color:{background_color}; padding:10px;'>{content} Counter: {st.session_state.counter}</div>"
+                 styled_content = f"<div style='background-color:{background_color}; padding:10px;'>{re.sub(pattern, '', content)} Counter: {st.session_state.counter}</div>"
                  st.markdown(styled_content, unsafe_allow_html=True)
 
 
