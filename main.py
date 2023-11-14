@@ -53,7 +53,6 @@ def main():
 
 def question_answer(question):
  global counter
- st.session_state.counter = st.session_state.counter + 1
  client = st.session_state.client
  thread = st.session_state.thread
  messages = ""
