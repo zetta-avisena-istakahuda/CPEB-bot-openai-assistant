@@ -38,6 +38,7 @@ def main():
                 st.warning("Please enter a question.")
             else:
                 # Generate and display the answer
+                question = ''
                 messages = question_answer(question)
                 for msg in reversed(messages.data):
                  role = msg.role
