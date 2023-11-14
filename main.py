@@ -78,10 +78,6 @@ def question_answer(question):
   messages = client.beta.threads.messages.list(
   thread_id = thread.id
   )
- else:
-  messages = client.beta.threads.messages.list(
-  thread_id = thread.id
-  ) 
 
  return(messages)
 
