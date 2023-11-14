@@ -50,7 +50,7 @@ def main():
                  else:
                      background_color = "white"
                      
-                 styled_content = f"<p style='background-color:{background_color}; padding:10px;'>{content}</p>"
+                 styled_content = f"<div style='background-color:{background_color}; padding:10px;'><p>{content}</p></div>"
                  st.markdown(styled_content, unsafe_allow_html=True)
 
 
