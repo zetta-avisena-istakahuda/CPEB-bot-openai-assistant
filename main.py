@@ -32,7 +32,7 @@ def main():
     with right_column:
         st.title(f"CPEB 2024 - Posez-nous vos questions...")
         question = st.text_input("Entrez votre question:")
-        if st.button("Obtenir la réponse") or question:
+        if st.button("Obtenir la réponse"):
             # Check if a question is provided
             if not question:
                 st.warning("Please enter a question.")
@@ -49,7 +49,7 @@ def main():
                      background_color = "lightgrey"
                  else:
                      background_color = "white"
-                 styled_content = f"<div style='background-color:{background_color}; padding:10px;'>{re.sub(pattern, '', content)} Counter: {st.session_state.counter}</div>"
+                 styled_content = f"<div style='background-color:{background_color}; padding:10px;'>{re.sub(pattern, '', content)}</div>"
                  st.markdown(styled_content, unsafe_allow_html=True)
 
 
