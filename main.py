@@ -39,7 +39,7 @@ def main():
                 # Generate and display the answer
                 messages = question_answer(question)
                 question = ''
-                for msg in reversed(messages.data):
+                for msg in reversed(messages):
                  role = msg.role
                  content = msg.content[0].text.value
                  if role.lower() == "user":
@@ -79,9 +79,12 @@ def question_answer(question):
  if run_status.status == 'completed':
   messages = client.beta.threads.messages.list(
   thread_id = thread.id
+  st.session_state.messages = messages
   )
+ else:
+  messages = st.session_state.messages
 
- return(messages)
+ return(messages.data)
 
 if __name__ == "__main__":
 
