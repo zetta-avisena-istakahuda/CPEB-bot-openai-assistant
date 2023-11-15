@@ -60,9 +60,9 @@ def main():
                  st.markdown(styled_content, unsafe_allow_html=True)
 
 
-def question_answer(question, isError):
+def question_answer(question, isErrorParam):
  global isError
- isError = isError
+ isError = isErrorParam
  client = st.session_state.client
  thread = st.session_state.thread
  messages = []
