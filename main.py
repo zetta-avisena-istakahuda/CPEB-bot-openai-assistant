@@ -71,7 +71,7 @@ def question_answer(question, isErrorParam):
   messages = client.beta.threads.messages.list(
   thread_id = thread.id,
   )
-
+  time.sleep(10)
  else:   
   message = client.beta.threads.messages.create(
     thread_id = thread.id,
