@@ -67,17 +67,18 @@ def question_answer(question, isErrorParam):
  thread = st.session_state.thread
  messages = []
  import time
-# if not isError:
-#   message = client.beta.threads.messages.create(
-#     thread_id = thread.id,
-#     role = "user",
-#     content = question
-# )
- run = client.beta.threads.runs.create(
+if not isError:
+  message = client.beta.threads.messages.create(
+    thread_id = thread.id,
+    role = "user",
+    content = question
+  )
+  run = client.beta.threads.runs.create(
     thread_id = thread.id,
     assistant_id = 'asst_ClB4u6msV6MOYyH57halU5cU',
-)
- time.sleep(30)
+  )
+  time.sleep(30)
+    
  run_status = client.beta.threads.runs.retrieve(
   thread_id = thread.id,
   run_id = run.id
