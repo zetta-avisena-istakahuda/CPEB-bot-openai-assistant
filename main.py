@@ -67,7 +67,7 @@ def question_answer(question, isErrorParam):
  thread = st.session_state.thread
  messages = []
  import time
-if not isError:
+ if not isError:
   message = client.beta.threads.messages.create(
     thread_id = thread.id,
     role = "user",
