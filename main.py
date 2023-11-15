@@ -4,6 +4,7 @@ import openai
 
 openai_api_key = os.getenv("OPENAI_API_KEY")
 messages = []
+isError = False
 if 'code_executed' not in st.session_state:
     # Initialize the OpenAI client and create a thread
     api_config = st.secrets["api"]
@@ -60,7 +61,8 @@ def main():
 
 
 def question_answer(question, isError):
- global counter
+ global isError
+ isError = isError
  client = st.session_state.client
  thread = st.session_state.thread
  messages = []
