@@ -10,7 +10,6 @@ if 'code_executed' not in st.session_state:
     api_config = st.secrets["api"]
     openai_api_key = api_config["openai_api_key"]
     data = {'data':[]}
-    st.session_state.run_id = ''
     st.session_state.messages = data
     st.session_state.client = openai.OpenAI(api_key=openai_api_key)
     st.session_state.thread = st.session_state.client.beta.threads.create()
@@ -42,7 +41,7 @@ def main():
                 # Generate and display the answer
                 while True:
                  try:
-                  messages = question_answer(question, True)
+                  messages = question_answer(question, False)
                   break
                  except Exception as e:
                   messages = question_answer(question, True)
@@ -70,7 +69,7 @@ def question_answer(question, isErrorParam):
  import time
  if isError:
   messages = client.beta.threads.messages.list(
-  thread_id = 'thread_rGgS2pcpL4pH0UsGmYcMVbct',
+  thread_id = thread.id,
   )
 
  else:   
