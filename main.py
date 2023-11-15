@@ -68,11 +68,11 @@ def question_answer(question, isErrorParam):
  messages = []
  import time
  if not isError:
-  message = client.beta.threads.messages.create(
-    thread_id = thread.id,
-    role = "user",
-    content = question
-)
+#   message = client.beta.threads.messages.create(
+#     thread_id = thread.id,
+#     role = "user",
+#     content = question
+# )
  run = client.beta.threads.runs.create(
     thread_id = thread.id,
     assistant_id = 'asst_ClB4u6msV6MOYyH57halU5cU',
