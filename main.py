@@ -38,7 +38,12 @@ def main():
                 st.warning("Please enter a question.")
             else:
                 # Generate and display the answer
-                messages = question_answer(question)
+                while True:
+                 try:
+                  messages = question_answer(question, False)
+                  break
+                 except Exception as e:
+                  messages = question_answer(question, True)
                 question = ''
                 for msg in reversed(messages):
                  role = msg.role
@@ -54,14 +59,14 @@ def main():
                  st.markdown(styled_content, unsafe_allow_html=True)
 
 
-def question_answer(question):
+def question_answer(question, isError):
  global counter
  client = st.session_state.client
  thread = st.session_state.thread
  messages = []
  import time
-
- message = client.beta.threads.messages.create(
+ if !errorStatus:
+  message = client.beta.threads.messages.create(
     thread_id = thread.id,
     role = "user",
     content = question
