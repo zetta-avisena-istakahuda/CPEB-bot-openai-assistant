@@ -41,10 +41,10 @@ def main():
                 # Generate and display the answer
                 while True:
                  try:
-                  messages = question_answer(question + ' au format puces', False)
+                  messages = question_answer(question', False)
                   break
                  except Exception as e:
-                  messages = question_answer(question + ' au format puces', True)
+                  messages = question_answer(question, True)
                 question = ''
                 for msg in reversed(messages):
                  role = msg.role
