@@ -10,6 +10,7 @@ if 'code_executed' not in st.session_state:
     api_config = st.secrets["api"]
     openai_api_key = api_config["openai_api_key"]
     data = {'data':[]}
+    st.session_state.run_id = ''
     st.session_state.messages = data
     st.session_state.client = openai.OpenAI(api_key=openai_api_key)
     st.session_state.thread = st.session_state.client.beta.threads.create()
@@ -67,7 +68,12 @@ def question_answer(question, isErrorParam):
  thread = st.session_state.thread
  messages = []
  import time
- if not isError:
+ if isError:
+  messages = client.beta.threads.messages.list(
+  thread_id = 'thread_rGgS2pcpL4pH0UsGmYcMVbct',
+  )
+
+ else:   
   message = client.beta.threads.messages.create(
     thread_id = thread.id,
     role = "user",
@@ -78,23 +84,23 @@ def question_answer(question, isErrorParam):
     assistant_id = 'asst_ClB4u6msV6MOYyH57halU5cU',
   )
   time.sleep(30)
+  st.session_state.run_id = run.id 
+  run_status = client.beta.threads.runs.retrieve(
+   thread_id = thread.id,
+   run_id = run.id
+  )
     
- run_status = client.beta.threads.runs.retrieve(
-  thread_id = thread.id,
-  run_id = run.id
- )
-    
- while run_status.status != 'completed':
-  run = client.beta.threads.runs.create(
+  while run_status.status != 'completed':
+   run = client.beta.threads.runs.create(
     thread_id = thread.id,
     assistant_id = 'asst_ClB4u6msV6MOYyH57halU5cU',
   )
-  time.sleep(30) 
-  run_status = client.beta.threads.runs.retrieve(thread_id=thread.id, run_id=run.id)
+   time.sleep(30) 
+   run_status = client.beta.threads.runs.retrieve(thread_id=thread.id, run_id=run.id)
     
  #messages = st.session_state.messages
  #if run_status.status == 'completed':
- messages = client.beta.threads.messages.list(
+  messages = client.beta.threads.messages.list(
   thread_id = thread.id,
   )
   #st.session_state.messages = messages
