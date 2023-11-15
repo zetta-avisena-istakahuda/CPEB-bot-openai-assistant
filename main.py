@@ -41,7 +41,7 @@ def main():
                 # Generate and display the answer
                 while True:
                  try:
-                  messages = question_answer(question', False)
+                  messages = question_answer(question, False)
                   break
                  except Exception as e:
                   messages = question_answer(question, True)
