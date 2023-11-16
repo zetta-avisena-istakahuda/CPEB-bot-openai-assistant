@@ -89,7 +89,7 @@ def question_answer(question, isErrorParam):
    thread_id = thread.id,
    run_id = run.id
   )
-    
+  st.write('RUN STATUS: ', run_status.status)
   while run_status.status is not None and run_status.status != 'completed':
    run = client.beta.threads.runs.create(
     thread_id = thread.id,
