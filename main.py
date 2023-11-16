@@ -95,6 +95,11 @@ def question_answer(question, isErrorParam):
   #   thread_id = thread.id,
   #   assistant_id = 'asst_ClB4u6msV6MOYyH57halU5cU',
   # )
+   if run_status.status == 'failed':
+    run = client.beta.threads.runs.create(
+    thread_id = thread.id,
+    assistant_id = 'asst_ClB4u6msV6MOYyH57halU5cU',
+    )
    time.sleep(10) 
    run_status = client.beta.threads.runs.retrieve(thread_id=thread.id, run_id=run.id)
    st.write('RUN STATUS: ', run_status.status)
