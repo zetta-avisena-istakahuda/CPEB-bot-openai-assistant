@@ -96,6 +96,11 @@ def question_answer(question, isErrorParam):
   #   assistant_id = 'asst_ClB4u6msV6MOYyH57halU5cU',
   # )
    if run_status.status == 'failed':
+    message = client.beta.threads.messages.create(
+     thread_id = thread.id,
+     role = "user",
+     content = question
+     )
     run = client.beta.threads.runs.create(
     thread_id = thread.id,
     assistant_id = 'asst_ClB4u6msV6MOYyH57halU5cU',
