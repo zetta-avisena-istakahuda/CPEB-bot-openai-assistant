@@ -83,7 +83,10 @@ def question_answer(question, isErrorParam):
     thread_id = thread.id,
     assistant_id = 'asst_ClB4u6msV6MOYyH57halU5cU',
     instructions = "Please provide the answer in bullet point format.  Always answer in French",
-    tools=[{"type": "retrieval"}]
+    tools=[{"type": "retrieval"}],
+    file_ids: [
+    "file-7QQupGwsQUM4koH98DdIxMPK",
+  ],
   )
   time.sleep(30)
   st.session_state.run_id = run.id 
@@ -108,7 +111,10 @@ def question_answer(question, isErrorParam):
     thread_id = thread.id,
     assistant_id = 'asst_ClB4u6msV6MOYyH57halU5cU',
     instructions = "Please provide the answer in bullet point format.  Always answer in French",
-    tools=[{"type": "retrieval"}]
+    tools=[{"type": "retrieval"}],
+    file_ids: [
+    "file-7QQupGwsQUM4koH98DdIxMPK",
+     ],
     )
        
    time.sleep(10) 
