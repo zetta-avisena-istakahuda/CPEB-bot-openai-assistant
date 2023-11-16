@@ -102,6 +102,7 @@ def question_answer(question, isErrorParam):
      role = "user",
      content = question
      )
+     st.write('FAILED REASON: ', run_status.last_error)
     run = client.beta.threads.runs.create(
     thread_id = thread.id,
     assistant_id = 'asst_ClB4u6msV6MOYyH57halU5cU',
