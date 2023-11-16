@@ -82,6 +82,7 @@ def question_answer(question, isErrorParam):
   run = client.beta.threads.runs.create(
     thread_id = thread.id,
     assistant_id = 'asst_ClB4u6msV6MOYyH57halU5cU',
+    instructions = "Please provide the answer in bullet point format.  Always answer in French"
   )
   time.sleep(30)
   st.session_state.run_id = run.id 
@@ -104,6 +105,7 @@ def question_answer(question, isErrorParam):
     run = client.beta.threads.runs.create(
     thread_id = thread.id,
     assistant_id = 'asst_ClB4u6msV6MOYyH57halU5cU',
+    instructions = "Please provide the answer in bullet point format.  Always answer in French"
     )
    time.sleep(10) 
    run_status = client.beta.threads.runs.retrieve(thread_id=thread.id, run_id=run.id)
