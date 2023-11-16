@@ -84,7 +84,7 @@ def question_answer(question, isErrorParam):
     assistant_id = 'asst_ClB4u6msV6MOYyH57halU5cU',
     instructions = "Please provide the answer in bullet point format.  Always answer in French",
     tools=[{"type": "retrieval"}],
-    file_ids: [
+    file_ids= [
     "file-7QQupGwsQUM4koH98DdIxMPK",
   ],
   )
@@ -112,7 +112,7 @@ def question_answer(question, isErrorParam):
     assistant_id = 'asst_ClB4u6msV6MOYyH57halU5cU',
     instructions = "Please provide the answer in bullet point format.  Always answer in French",
     tools=[{"type": "retrieval"}],
-    file_ids: [
+    file_ids= [
     "file-7QQupGwsQUM4koH98DdIxMPK",
      ],
     )
