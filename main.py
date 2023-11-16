@@ -45,6 +45,7 @@ def main():
                   break
                  except Exception as e:
                   messages = question_answer(question, True)
+                  st.write("ERROR")
                 question = ''
                 for msg in reversed(messages):
                  role = msg.role
